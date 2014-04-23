@@ -2,11 +2,11 @@
 #include "TF1.h"
 
 double smearPt(double pt,int hiBin){
- TF1 *f_pp = new TF1("f_pp","0.018+1.251/sqrt(x)",40,300);
- TF1 *f_50_100 = new TF1("f_0_10","0.018+1.251/sqrt(x)+0.480/x",40,300);
- TF1 *f_30_50 = new TF1("f_10_30","0.018+1.251/sqrt(x)+0.528/x",40,300);
- TF1 *f_10_30 = new TF1("f_30_50","0.018+1.251/sqrt(x)+0.829/x",40,300);
- TF1 *f_0_10 = new TF1("f_50_100","0.018+1.251/sqrt(x)+2.119/x",40,300);
+ TF1 *f_pp = new TF1("f_pp","sqrt(pow(0.046,2)+pow(1.350/sqrt(x),2))",40,300);
+ TF1 *f_50_100 = new TF1("f_0_10","sqrt(pow(0.046,2)+pow(1.350/sqrt(x),2)+pow(3.435/x,2))",40,300);
+ TF1 *f_30_50 = new TF1("f_10_30","sqrt(pow(0.046,2)+pow(1.350/sqrt(x),2)+pow(3.721/x,2))",40,300);
+ TF1 *f_10_30 = new TF1("f_30_50","sqrt(pow(0.046,2)+pow(1.350/sqrt(x),2)+pow(4.684/x,2))",40,300);
+ TF1 *f_0_10 = new TF1("f_50_100","sqrt(pow(0.046,2)+pow(1.350/sqrt(x),2)+pow(7.665/x,2))",40,300);
 
  TF1 * fgaus=new TF1("fgaus","gaus(0)",-20,20);
  fgaus->SetParameters(1,0,1);
