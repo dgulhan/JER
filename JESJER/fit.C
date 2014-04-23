@@ -47,16 +47,16 @@ TH1D * JER_30_50 = (TH1D*)file_PbPb->Get("JER_30_50");
 TH1D * JER_50_100 = (TH1D*)file_PbPb->Get("JER_50_100");
 
 
-TF1 *f_pp = new TF1("f_pp","[0]+[1]/sqrt(x)",40,300);
+TF1 *f_pp = new TF1("f_pp","sqrt(pow([0],2)+pow([1]/sqrt(x),2))",40,300);
 f_pp->SetParameters(0.01,1.1);
 JER_pp->Fit("f_pp");
 
-TF1 *f_0_10 = new TF1("f_0_10",Form("%.4f+%.4f/sqrt(x)+[0]/x",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
-TF1 *f_10_30 = new TF1("f_10_30",Form("%.4f+%.4f/sqrt(x)+[0]/x",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
-TF1 *f_30_50 = new TF1("f_30_50",Form("%.4f+%.4f/sqrt(x)+[0]/x",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
-TF1 *f_50_100 = new TF1("f_50_100",Form("%.4f+%.4f/sqrt(x)+[0]/x",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
+TF1 *f_0_10 = new TF1("f_0_10",Form("sqrt(pow(%.4f,2)+pow(%.4f/sqrt(x),2)+pow([0]/x,2))",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
+TF1 *f_10_30 = new TF1("f_10_30",Form("sqrt(pow(%.4f,2)+pow(%.4f/sqrt(x),2)+pow([0]/x,2))",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
+TF1 *f_30_50 = new TF1("f_30_50",Form("sqrt(pow(%.4f,2)+pow(%.4f/sqrt(x),2)+pow([0]/x,2))",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
+TF1 *f_50_100 = new TF1("f_50_100",Form("sqrt(pow(%.4f,2)+pow(%.4f/sqrt(x),2)+pow([0]/x,2))",f_pp->GetParameter(0),f_pp->GetParameter(1)),40,300);
 
-f_0_10->SetParameter(0,1);
+f_0_10->SetParameter(0,5);
 f_10_30->SetParameter(0,1);
 f_30_50->SetParameter(0,1);
 f_50_100->SetParameter(0,1);
